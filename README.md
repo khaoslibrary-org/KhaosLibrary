@@ -1,2 +1,2 @@
-# khaos_library
+# KhaosLibrary 
 a metadata library on blockchain 
