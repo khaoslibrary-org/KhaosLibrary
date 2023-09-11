@@ -15,7 +15,7 @@ While the full definition of Data(Thing) is available at https://schema.org, you
 | adminMetadata | [CreativeWork](https://schema.org/CreativeWork)           | Yes      | Metadata about the metadata, such as contributors and etc  <br />Entries are used to describe Things, but the entries themselves have their contributors and other metadata, so this attribute is added. According to the original design of schema.org, DataFeed as top-level data can be solved, but it is very unfavourable for consumption and parsing.<br />Definition in :http://id.loc.gov/ontologies/bibframe/AdminMetadata |
 | description   | @container                                                | No       |                                                              |
 | alternateName | @container                                                | No       |                                                              |
-| identifier    | List of [PropertyValue](https://schema.org/PropertyValue) | Yes      | The external or other ID that unambiguously identifies this edition.   <br />Multiple      identifiers are allowed. For more details, refer to              [`PropertyValue` (`identifier`)](https://developers.google.com/search/docs/appearance/structured-data/book#propertyvalue-identifier). <br /> |
+| identifier    | List of [PropertyValue](https://schema.org/PropertyValue) | Yes      | The external or other ID that unambiguously identifies this edition.   <br />Multiple      identifiers are allowed. For more details, refer to       [identifier](#[identifier](https://schema.org/identifier)). <br /> |
 
 
 

@@ -20,7 +20,7 @@
   - etc.
 - Includes various creative work metadata (e.g. book/movie/music/game/theatre).
   - Book ISBN, publication, cover, author, etc.
-  - Book ISBN, publication, cover, author, etc. Film rating, release, poster, director, cast, etc.
+  - Film rating, release, poster, director, cast, etc.
   - etc.
 - Permanent and decentralised storage
 - Censorship resistance
