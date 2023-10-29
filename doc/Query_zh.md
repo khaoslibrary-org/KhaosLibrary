@@ -1,34 +1,35 @@
 
 
-There are two ways to search for data that are sufficiently decentralized and open:
+提供两种搜索数据的方式，足够地去中心化和开放：
 
-- Through the Arweave generic search gateway
+- 通过Arweave通用的搜索网关
 
-- Through the Khaos Library dedicated search gateway - Magical Index
+- 通过Khaos Library专用的搜索网关 - Magical Index
 
 
 
-## Arweave Generic Search Gateway
+## Arweave通用的搜索网关
 
-This way, you can search the data in GraphQL based on the tags in the data.
+这种方式可以根据数据中的tag， 以GraphQL的方式搜索。
 
-### Gateway List
+### 网关列表
 
-| Provider                    | Address/Address List                                                | Comment                                                         |
+| 名称                    | 地址/地址列表                                                | 备注                                                         |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Arweave                | http://arweave.net/graphql                                   | non-open source                                                       |
-| AR.IO               | https://gateway-explorer.vercel.app/                         | Open source, self-host support.<br />Add /graphql to the address in the list is the search gateway. |
-| Goldensky               | https://arweave-search.goldsky.com/graphql                   | A search engine in collaboration with the Arweave team that supports more powerful search features such as fuzzy search. |
-| irys(former bundlr)      | https://devnet.irys.xyz/graphql<br />https://node1.irys.xyz/graphql<br />https://node2.irys.xyz/graphql |                                    |
+| 官方网关                | http://arweave.net/graphql                                   | 不开源                                                       |
+| AR.IO网关               | https://gateway-explorer.vercel.app/                         | 开源，支持self-host。<br />在列表中地址后加 /graphql 就是搜索网关 |
+| Goldensky               | https://arweave-search.goldsky.com/graphql                   | 和Arweave团队合作的搜索引擎，支持更强大的搜索功能，比如模糊搜索。 |
+| irys网关(原bundlr)      | https://devnet.irys.xyz/graphql<br />https://node1.irys.xyz/graphql<br />https://node2.irys.xyz/graphql | 原bundlr团队提供的搜索网关                                   |
 | KNN3 arseeding indexing | https://knn3-gateway.knn3.xyz/arseeding/graphql              |                                                              |
 
-### Search example
+### 搜索示例
 
-Note that to prevent interference with dirty data, specify the official address of the Khaos Library: `0G6nYuKqlMpp920MiTAviJUTEWPGRE4yYb6Fey1OGtY` .
+注意，为了防止脏数据干扰，请指定Khaos Library的官方地址：`0G6nYuKqlMpp920MiTAviJUTEWPGRE4yYb6Fey1OGtY` 。
 
-When there is more than one data with the same 'isbn' and 'id' (in the tag), it means that the data has been corrected, with the largest revision number prevailing.
+当有相同isbn和id (tag 中)的多个数据时，表示数据经过修正，以revision最新的为准。
 
-#### Search book metadata by isbn
+#### 通过isbn搜索书籍信息
+
 
 ```graphql
 query( $count: Int ){
@@ -67,7 +68,8 @@ query( $count: Int ){
 
 
 
-#### Search book metadata by book name
+#### 通过书名搜索书籍信息
+
 
 ```graphql
 query( $count: Int ){
@@ -106,7 +108,7 @@ query( $count: Int ){
 
 
 
-#### Search book metadata by author
+#### 通过作者搜索书籍信息
 
 ```graphql
 query( $count: Int ){
@@ -144,14 +146,15 @@ query( $count: Int ){
 
 ```
 
-#### Search book metadata by other identifiers
+#### 通过其他标识搜索书籍信息
 
-If you need to search by other identifiers, please refer to: https://github.com/khaoslibrary-org/KhaosLibrary/blob/main/doc/Model.md#identifier.
+如果需要通过其他标识搜索，请参照https://github.com/khaoslibrary-org/KhaosLibrary/blob/main/doc/Model.md#identifier  一节中的标识。
 
 
-#### Get more details
 
-Example of search results:
+#### 获得更详细信息
+
+搜索结果示例：
 
 ```graphql
 {
@@ -237,18 +240,19 @@ Example of search results:
 }
 ```
 
-For more details, take the value of "transactions" - "edges" - "node" - "id" and splice it after any gateway domain, for example:
+想获得更详细信息，请将  "transactions"- "edges"  -  "node"-   "id"的value，拼接在任意网关域名之后，比如：
+
 [https://arweave.net/m7qwCmGcT4aIS9JNqExzB5OMIXzHviXxmGe634dP4iw](https://arweave.net/m7qwCmGcT4aIS9JNqExzB5OMIXzHviXxmGe634dP4iw) 
 
 
 
-#### Advanced search
+#### 高级搜索
 
-- [Arweave graphql guide](https://gql-guide.vercel.app/)
+- [官方文档](https://gql-guide.vercel.app/)
 - https://cookbook.ar-io.dev/guides/querying-arweave/search-indexing-service.html
 
 ## Magical Index
 
-Khaos Library dedicated search gateway, only index Khaos Library related data , provide more professional and fast search.
+khaos library专用的搜索网关，只索引khaos library相关数据的搜索网关，提供更加专业和快速的搜索。
 
-Under development, will be open source and support self-host.
+正在开发中，后续会开源并支持self-host。
