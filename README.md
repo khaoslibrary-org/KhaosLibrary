@@ -34,7 +34,9 @@ See [details](doc/Model.md)
 
 ## Queries
 Queries are currently available through Arweave's official or unofficial gateway.
+
 - [Doc](doc/Query.md)
+
 Sample queries:
 - [Search book metadata by isbn](doc/Query.md#search-book-metadata-by-isbn)
 - [Search book metadata by book name](doc/Query.md#search-book-metadata-by-book-name)
