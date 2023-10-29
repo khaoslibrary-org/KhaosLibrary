@@ -31,8 +31,13 @@
 
 ## 查询
 目前可以通过Arweave的官方或非官方Gateway查询。
-查询示例
-
+[Doc](doc/Query.md)
+查询示例:
+[通过isbn查询书籍元数据](doc/Query_zh.md#search-book-metadata-by-isbn)
+[通过书籍名称查询书籍元数据](doc/Query_zh.md#search-book-metadata-by-book-name)
+[通过作者名查询书籍元数据](doc/Query_zh.md#search-book-metadata-by-author)
+[通过其他标识查询书籍元数据](doc/Query_zh.md#search-book-metadata-by-other-identifiers)
+[获得书籍详细元数据](doc/Query_zh.md#get-more-details)
 
 ## 贡献
 ### 数据结构建议
