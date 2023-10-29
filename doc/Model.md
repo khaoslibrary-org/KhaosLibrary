@@ -25,8 +25,9 @@ While the full definition of Data(Thing) is available at https://schema.org, you
 | ---------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | author     | [Person](https://schema.org/Person) or              [Organization](https://schema.org/Organization) | Yes      | The author of this  CreativeWork.                            |
 | name       | [Text](https://schema.org/Text)                              | Yes      | The name of the CreativeWork.                                |
-| inLanguage | [Text](https://schema.org/Text)                              | Yes      | The main language of the content in the CreativeWork.<br /><br /> For Work, it's the original language of the work. <br />Use one of the two-letter codes   from the [list               of ISO 639-1 alpha-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). |
+| inLanguage | [Text](https://schema.org/Text)                              | Yes      | The main language of the content in the CreativeWork.<br /><br /> For Work, it's the original language of the work. <br />The language tag *MUST* be well-formed according to section     [2.2.9 Classes of Conformance](https://tools.ietf.org/html/bcp47#section-2.2.9)   of [[BCP47](https://www.w3.org/TR/json-ld11/#bib-bcp47)]. |
 | genre      | [Text](https://schema.org/Text)                              | No       | Use one of the words  from the [Genre/Form Terms (LCGFT)](https://id.loc.gov/authorities/genreForms) |
+| image      | [URL](https://schema.org/URL)                                | No       | To be sufficiently decentralised, the original plan was to use arweave-hash for this value, but that wouldn't comply with the schema.org specification and would be misleading to the three parties using the data, so the official Arweave gateway is used here.<br/><br/>One caveat is that the final hash (after the https://arweave.net/) is arweave-hash and you can use it with any gateway. |
 
 
 
@@ -49,40 +50,11 @@ Not every Book (edition) corresponds to owning a Work,  and Work is only created
 | Property                                      | Type                                                    | Required | Description                                                  |
 | --------------------------------------------- | ------------------------------------------------------- | -------- | ------------------------------------------------------------ |
 | [workExample](https://schema.org/workExample) | List of [CreativeWork](https://schema.org/CreativeWork) | Yes      | Example/instance/realization/derivation of the concept of this creative  work. E.g. the paperback edition, first edition, or e-book. |
+| genre                                         | [Text](https://schema.org/Text)                         | No       | Use  words  from the  [Genre/Form Terms (LCGFT)](https://id.loc.gov/authorities/genreForms) |
 
 ## BookSeries
 
-A collection of Book Edtion. Generally speaking, Book Series contains two types:
-
-- Publishers' reprint series
-- [novel sequence](https://en.wikipedia.org/wiki/Book_series)
-
-In the Schema.org use case, BookSeries also contains periodical.
-
-We discuss each of these cases separately:
-
-| Concepts                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Publishers' reprint series                                   | Instead of creating a separate entry, use the **publisherSeriesName** attribute. |
-| [novel sequence](https://en.wikipedia.org/wiki/Book_series)  (contains comic) | use [FictionSquence](FictionSquence) type                    |
-| periodical                                                   | use [Periodical](https://schema.org/Periodical)  Type        |
-
-Also see https://en.wikipedia.org/wiki/Book_series.
-
-## FictionSquence
-
-A collection of fictional book editions using the **BookSeries** type, dedicated to representing series of fictional works (especially comics and SF novels), such as
-
-[The Hardy Boys](https://en.wikipedia.org/wiki/The_Hardy_Boys), [Nancy Drew](https://en.wikipedia.org/wiki/Nancy_Drew), [Harry Potter]( https://en.wikipedia.org/wiki/Harry_Potter) series, *[The Lord of the Rings](https://en.wikipedia.org/wiki/The_Lord_of_the_Rings)* volumes, etc.
-
-According to the **FRBR** model, this type of series should also distinguish between **Work** and **Edtion**, where the FictionSquence is closely related to the Edtion of a book, so it is considered the Edtion of "FictionSquence", such as
-
->  A Song of Ice and Fire (Books 1-5) - xxx Publishing - xxxx.
-
-FictionSquence and Book can belong to the same **Work**.
-
-Note that FictionSquence is a collection of editions with multiple ISBN numbers. If several volumes of the same series of novels share a single ISBN, they are treated as a '**Book**' and belong to the same work as other versions of FictionSquence.
-
+TODO
 
 ## [Book](https://schema.org/Book)
 
@@ -91,7 +63,7 @@ Note that FictionSquence is a collection of editions with multiple ISBN numbers.
 | bookFormat | [`Enum`](https://schema.org/Enumeration) | Yes        | The format of the edition. The value of this must be one of the              following:      <br />-  [EBook](https://schema.org/EBook) <br />-  [Hardcover](https://schema.org/Hardcover) <br />-  [Paperback](https://schema.org/Paperback) <br /> -  [GraphicNovel](https://schema.org/GraphicNovel) <br /><br />When the format type is [AudiobookFormat](https://schema.org/EBook), it should be classified as a subclass of Book [Audiobook](https://schema.org/Audiobook). |
 | isbn       | Text                                     | No. <br /> | The ISBN-13 of the edition. <br /><br />Normally, at least one of the isbn(13) and isbn10 must be present.<br />Only if the value of "bookFormat" is "EBook" or "AudiobookFormat", it is not required.<br /> |
 
-
+[Sample Data](https://arweave.net/m7qwCmGcT4aIS9JNqExzB5OMIXzHviXxmGe634dP4iw)
 
 ## [identifier](https://schema.org/identifier)
 
@@ -113,18 +85,25 @@ Here, for the time being, we define some ‘propertyID’ for different things w
 (WIP)
 ### Person or   Organization
 
-- VIVF
+- VIAF
+- WIKIDATA
+
+###  Work
+
+- OPENLIBRARY
 - WIKIDATA
 
 ### Book
 
 - OPENLIBRARY
+- ISBN10
 - OCLC_NUMBER
 - JP_E-CODE
 - LCCN
-- GOODREADER
+- GOODREADS
 - DOUBAN
 - LIBRARYTHING
+- CSBN
 
 ### Movie And TV
 
@@ -133,8 +112,4 @@ Here, for the time being, we define some ‘propertyID’ for different things w
 - DOUBAN
 - ANIDB
 - BANGUMI
-
-
-
-
 
